@@ -1,5 +1,7 @@
 body {
-    font-family: 'Roboto Slab', 'Helvetica Neue', sans-serif;
+    font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
     background-color: #F5F5F5;
 }
 
@@ -11,4 +13,67 @@ h1 {
 h2 {
     font-size: 14px;
     font-weight: 300;
+}
+
+nav {
+    font-family: 'Roboto Slab', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    background-color: #FFFFFF;
+    box-shadow: none;
+}
+
+.nav-wrapper {
+    margin: 15px;
+}
+
+nav ul a,
+nav .brand-logo {
+    color: #000000;
+}
+
+.container {
+    background-color: #FFFFFF;
+}
+
+@media (min-width: 600px) {
+    .container {
+        width: 550px;
+        font-size: 1em;
+    }
+
+    /*#splash {
+    margin-top: -64px;
+    }*/
+}
+
+@media (min-width: 992px) {
+    .container {
+        width: 900px;
+        font-size: 1em;
+    }
+}
+
+@media (max-width: 992px) {
+    /*#splash {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        background-image: url("../images/background_home_m.jpg");
+        background-size: cover;
+        background-position: center;
+    }
+
+    #splash img {
+        display: none;
+    }
+
+    #work {
+        margin-top: 40%;
+    }*/
+}
+
+@media (max-width: 600px) {
+    /*#work {
+        margin-top: 60%;
+    }*/
 }
