@@ -1,49 +1,100 @@
 body {
-    font-family: 'Roboto Condensed', 'Helvetica Neue', sans-serif;
+    font-family: 'Fira Mono', sans-serif;
     font-size: 18px;
-    font-weight: 300;
     background-color: #F5F5F5;
+    /*padding: 0 20px 0 20px;*/
+    color: #3A3A3A;
+    /*width: 1000px;*/
+    /*max-width: 1000px;*/
+    margin: auto;
+    height: 100%;
 }
 
 h1 {
-    font-size: 30px;
+    font-family: 'Bitter', serif;
+    font-size: 100px;
     font-weight: 700;
 }
 
 h2 {
-    font-size: 14px;
-    font-weight: 300;
+    font-family: 'Fira Mono', sans-serif;
+    font-size: 48px;
 }
 
-nav {
-    font-family: 'Roboto Slab', 'Helvetica Neue', sans-serif;
-    font-weight: 700;
-    background-color: #FFFFFF;
-    box-shadow: none;
+ol, ul {
+    list-style: none;
 }
 
-.nav-wrapper {
-    margin: 15px;
+.container-fluid {
+    background-color: #FEFEFE;
+    overflow-x: hidden;
 }
 
-nav ul a,
-nav .brand-logo {
-    color: #000000;
+.header {
+    top: 0;
+    left: 0;
+    position: 'fixed';
+    height: 80px;
+    z-index: 100;
+    padding: 20px;
 }
 
-.container {
-    background-color: #FFFFFF;
+    .header #header_menu li {
+        float: right;
+        padding: 15px 20px;
+        margin-right: 0;
+        margin-top: 0;
+        cursor: pointer;
+        position: relative;
+    }
+
+    .header #header_menu li a {
+        color: #3A3A3A;
+    }
+
+.homepage {
+    height: 100%;
 }
+
+.work {
+    /*height: 300px;*/
+    /*min-height: 250px;*/
+    margin: 10px; /* need to rebuild dom to wrap div around all children properly */
+    cursor: pointer;
+}
+
+    .work_item {
+        margin: auto;
+        margin-bottom: 10px;
+        height: 200px;
+        /*width: 200px;*/
+        width: 100%;
+        /*position: relative;*/
+        /*display: inline-block;*/
+        padding: 25px;
+        background-image: url('../images/vidgeo_logo.png');
+        cursor: pointer;
+    }
+
+    .row .item_header{
+        height: 100%;
+    }
+
+    .row .item_content {
+        height: 300px;
+    }
+
+
+
+
+
+/* ---- MEDIA QUERIES ----- */
 
 @media (min-width: 600px) {
     .container {
         width: 550px;
         font-size: 1em;
     }
-
-    /*#splash {
-    margin-top: -64px;
-    }*/
 }
 
 @media (min-width: 992px) {
@@ -54,26 +105,9 @@ nav .brand-logo {
 }
 
 @media (max-width: 992px) {
-    /*#splash {
-        position: absolute;
-        height: 100%;
-        width: 100%;
-        background-image: url("../images/background_home_m.jpg");
-        background-size: cover;
-        background-position: center;
-    }
 
-    #splash img {
-        display: none;
-    }
-
-    #work {
-        margin-top: 40%;
-    }*/
 }
 
 @media (max-width: 600px) {
-    /*#work {
-        margin-top: 60%;
-    }*/
+
 }

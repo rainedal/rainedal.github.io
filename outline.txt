@@ -1,0 +1,38 @@
+MOBILE APPLICATIONS/USER EXPERIENCE!?
+* MOBILE TEMPLATES 2.0
+* GRASSHOPPER/PREVIEWER
+* CONVERSANT CLIENT ACCESS
+* MEHUNGRY
+* VIDGEO
+* TRADIITIONS
+* LIVEIITUP
+
+PROTOTYPES
+* OPENWEATHERMAP
+* INSTAGRAM API
+* SPRITESHEET ANIMATION
+
+DIGITAL MEDIA
+* PEPSI MAX
+* FOOTLOCKER
+* POTTERY BARN TEEN
+* NATIONAL WEATHER SERVICE
+* CARHARTT
+* GENERAL MOTORS
+* VICTORIA'S SECRET
+
+PRINT & GRAPHIC DESIGN
+* UNION BOARD
+* ISO
+* ADDIS SCARVES
+
+http://aliadair.co.uk/portfolio/
+http://andrewdoherty.com/#about-andrew
+http://www.mirohristov.com/#portfolio
+http://www.creativebloq.com/ux/product-portfolios-61412126
+http://simonpan.com/work/amazon-prime-music/
+
+https://www.google.com/fonts#UsePlace:use/Collection:Bitter:400,700|Fira+Mono|Montserrat:700
+
+// browser history tracker plugin
+http://benalman.com/projects/jquery-hashchange-plugin/
