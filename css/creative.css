@@ -1,11 +1,12 @@
+html {
+    height: 100%;
+    overflow: hidden;
+}
+
 body {
     font-family: 'Fira Mono', sans-serif;
     font-size: 18px;
-    background-color: #F5F5F5;
-    /*padding: 0 20px 0 20px;*/
     color: #3A3A3A;
-    /*width: 1000px;*/
-    /*max-width: 1000px;*/
     margin: auto;
     height: 100%;
 }
@@ -14,27 +15,82 @@ h1 {
     font-family: 'Bitter', serif;
     font-size: 100px;
     font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
 h2 {
     font-family: 'Fira Mono', sans-serif;
     font-size: 48px;
+    font-weight: 500;
+    line-height: 1.1;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+h3 {
+    font-family: 'Bitter', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+p {
+    margin: 0;
 }
 
 ol, ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
 
-.container-fluid {
+.content_content ul {
+    list-style: square;
+    padding-left: 20px;
+}
+
+a {
+    text-decoration: none;
+}
+
+::selection {
+    color: #FFCB52;
+    background: none;
+}
+
+.grid-container {
     background-color: #FEFEFE;
-    overflow-x: hidden;
+    overflow: auto;
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+.main-page {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate3d(0, 0, 0);
+}
+
+.main-page.is-current {
+    visibility: visible;
+}
+
+.main-page.is-onTop {
+  z-index: 1;
 }
 
 .header {
     top: 0;
     left: 0;
-    position: 'fixed';
-    height: 80px;
+    height: 50px;
     z-index: 100;
     padding: 20px;
 }
@@ -53,61 +109,272 @@ ol, ul {
     }
 
 .homepage {
-    height: 100%;
+    margin: auto;
+    background-image: url("http://i.imgur.com/Y4mpAJy.jpg");
+    background-position: center bottom;
+}
+
+    .homepage_content {
+        padding-left: 50px;
+        margin: auto;
+        color: #FFFFFF;
+        display: block;
+        position: absolute;
+        top: 30%;        
+    }
+
+    .homepage .homepage_overlay {
+        background-color: #000000;
+        opacity: 0.75 !important;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        padding: 0;
+    }    
+
+.portfolio {
+    margin: auto;
 }
 
 .work {
-    /*height: 300px;*/
-    /*min-height: 250px;*/
-    margin: 10px; /* need to rebuild dom to wrap div around all children properly */
     cursor: pointer;
+    margin-bottom: 10px;
 }
 
-    .work_item {
-        margin: auto;
-        margin-bottom: 10px;
-        height: 200px;
-        /*width: 200px;*/
-        width: 100%;
-        /*position: relative;*/
-        /*display: inline-block;*/
-        padding: 25px;
-        background-image: url('../images/vidgeo_logo.png');
+    .work_header_text {
+        padding: 25px 50px 25px 50px;
+    }
+
+    #ux_header {
+        background-color: #FFCB52;
+    }
+
+    #proto_header {
+        background-color: #79D0EF;
+    }
+
+    #digi_header {
+        background-color: #D6AEFF;
+    }
+
+    #print_header {
+        background-color: #FF7D6F;
+    }    
+
+    /*
+
+    purple D6AEFF
+    red FF7D6F / FF6F73
+    green 9CE858 / 79E858
+
+     */
+
+    .work_thumb_list div {
         cursor: pointer;
+        position: relative;
+        background-color: #888888;
+        height: 150px;
+        background-repeat: no-repeat;
+        background-size: 100%;        
     }
 
-    .row .item_header{
+        #mobile_thumb {
+            background-image: url("https://i.imgur.com/6Lw4nYi.jpg");
+            background-position: center center;
+        }
+
+        #prev_thumb {
+            background-image: url("https://i.imgur.com/nFEXgh9.png");
+            background-position: left center;
+        }
+
+        #cap_thumb {
+            background-image: url("https://i.imgur.com/hwt3KiC.png");
+            background-position: left bottom;
+        }
+
+        #vidgeo_thumb {
+            background-image: url("https://i.imgur.com/N0XAiwf.png");
+            background-position: center center;
+        }
+
+        #trad_thumb {
+            background-image: url("https://i.imgur.com/SKbg0tH.png");
+            background-position: center bottom;
+        }                        
+
+        #owm_thumb {
+            background-image: url("https://i.imgur.com/1Pz9HTE.png");
+            background-position: center center;
+        }
+
+        #insta_thumb {
+            background-image: url("https://i.imgur.com/3q4CEt8.png");
+            background-position: center center;
+        }
+
+        #sprites_thumb {
+            background-image: url("https://i.imgur.com/DNuyqxP.png");
+            background-position: center center;
+        }
+
+        #pepsi_thumb {
+            background-image: url("https://i.imgur.com/181q62u.png");
+            background-position: left bottom;
+        }
+
+        #fl_thumb {
+            background-image: url("https://i.imgur.com/N0XAiwf.png");
+            background-position: center center;
+        }
+
+        #pt_thumb {
+            background-image: url("https://i.imgur.com/SKbg0tH.png");
+            background-position: center bottom;
+        }                        
+
+        #carhartt_thumb {
+            background-image: url("https://i.imgur.com/1Pz9HTE.png");
+            background-position: center center;
+        }
+
+        #ub_thumb {
+            background-image: url("https://i.imgur.com/Deq6qEo.png");
+            background-position: center center;
+        }
+
+    .work_thumb_list div a {
+        padding-left: 10px;
+        margin: auto;
+        font-family:  'Montserrat', sans-serif;
+        font-size: 28px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        display: block;
+        position: absolute;
+        top: 25%;
+    }
+    
+    .work_thumb_list .work_overlay {
+        background-color: #000000;
+        opacity: 0.7 !important;
+        position: relative;
         height: 100%;
+        width: 100%;
+        padding: 0;
     }
 
-    .row .item_content {
-        height: 300px;
+
+.work_content {
+    /*padding: 10px;*/
+    width: 100%;
+}
+
+    #mobile_content {
+        background-color: #FFDD8E;
     }
 
-
-
-
-
-/* ---- MEDIA QUERIES ----- */
-
-@media (min-width: 600px) {
-    .container {
-        width: 550px;
-        font-size: 1em;
+    #prev_content {
+        background-color: #FFF281;
     }
-}
 
-@media (min-width: 992px) {
-    .container {
-        width: 900px;
-        font-size: 1em;
+    #cap_content {
+        background-color: #E8D176;
     }
+
+    #vidgeo_content {
+        background-color: #E8BA76;
+    }
+
+    #trad_content {
+        background-color: #FFBA81;
+    }
+
+    #owm_content {
+        background-color: #B7E8FC;
+    }
+
+    #insta_content {
+        background-color: #9BC5D5;
+    }
+
+    #sprites_content {
+        background-color: #AEDCEF;
+    }
+
+    #pepsi_content {
+        background-color: #E3C1EF;
+    }
+
+    #fl_content {
+        background-color: #EFCBFC;
+    }
+
+    #pt_content {
+        background-color: #CAACD5;
+    }
+
+    #carhartt_content {
+        background-color: #A68DAF;
+    }
+
+    #ub_content {
+        background-color: #EFACA0;
+    }
+
+    #iso_content {
+        background-color: #FCB5A9;
+    }
+
+    .content {
+        padding: 5px 20px 5px 20px;
+    }
+
+    .content_header {
+        font-family: 'Montserrat', sans-serif;
+        text-transform: uppercase;
+        font-size: 30px;
+        text-align: center;
+        margin-bottom: 5px;
+    }
+
+    .content_content {
+        margin-bottom: 10px;
+    }
+
+.my-gallery {
+    /*width: 75%;*/
+    margin: 0 auto;
 }
 
-@media (max-width: 992px) {
-
+.my-gallery img {
+    width: 100%;
+    height: auto;
 }
 
-@media (max-width: 600px) {
-
+.my-gallery figure {
+    display: block;
+    float: left;
+    margin: 0 5px 5px 0;
+    width: 150px;
 }
+
+.my-gallery figcaption {
+    display: none;
+    font-size: 18px;
+}
+
+    .pswp__caption {
+        bottom: 50px;
+    }
+
+    .pswp__caption__center {
+        text-align: left;
+        max-width: 800px;
+        margin: 0 auto;
+        font-size: 18px;
+        padding: 10px;
+        line-height: 20px;
+        color: #CCC;   
+        background-color: #555555;
+    }
