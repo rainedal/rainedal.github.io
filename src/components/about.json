@@ -1,0 +1,25 @@
+{
+	"about": {
+		"title": "Hey there! I’m <br><br><span class='about-content__big-title'>Raine Dalusong</span>",
+		"content": "I'm currently working remotely from Seattle, Washington as a Creative Technologist for <a class='about-content__link' href='http://www.conversantmedia.com/' target='_blank'>Conversant Media</a>. I have a fierce adoration for web experiences that are both delightful and functional. During my free time, you can find me watching Japanese TV shows, studying figure skating programs, or shopping for anime merchandise.",
+		"socialTitle": "You can also find me through",
+		"socialNetworks": [
+      {
+				"name": "email",
+				"link": "mailto:rainedalusong@gmail.com"
+			},
+			{
+				"name": "twitter",
+				"link": "https://twitter.com/rainedal"
+			},
+			{
+				"name": "instagram",
+				"link": "https://www.instagram.com/bumighani/"
+			},
+			{
+				"name": "linkedin",
+				"link": "https://www.linkedin.com/in/lorrainedalusong/"
+			}
+		]
+	}
+}
