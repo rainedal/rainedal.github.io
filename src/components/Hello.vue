@@ -1,8 +1,10 @@
 <template>
   <div class="hello">
     <navigation></navigation>
-    <h1>{{ title }}</h1>
-    <h2>is a Creative Technologist in Seattle, Washington</h2>
+    <div ref="hello">
+      <h1>{{ title }}</h1>
+      <h2>is a Creative Technologist in Seattle, Washington</h2>
+    </div>
   </div>
 </template>
 
@@ -14,24 +16,24 @@
   const animMap = require('../anim-map.json')
 
   import _ from 'lodash'
-  import VirtualScroll from 'virtual-scroll'
+  import { TimelineMax, Expo } from 'gsap'
 
   export default {
     name: 'hello',
     data () {
       return {
-        title: 'Raine Dalusong'
+        title: 'Raine Dalusong',
+        menuState: MenuStore.state
+      }
+    },
+    computed: {
+      menuIsClosed () {
+        return this.menuState.isClosed
       }
     },
     mounted () {
-      this.vs = new VirtualScroll({
-        el: this.$el
-      })
-      this.onceWheel = _.once(this.wheel)
-      _.delay(this.events, 500)
-    },
-    beforeDestroy () {
-      this.unlistenEvents()
+      this.events()
+      this.ready()
     },
     beforeRouteLeave (to, from, next) {
       if (!MenuStore.state.isAnimated) {
@@ -42,15 +44,28 @@
         _.delay(next, delay)
       }
     },
+    beforeDestroy () {
+      this.unlistenElements()
+    },
     methods: {
       events () {
-        this.vs.on(this.onceWheel)
+        EventBus.$on('toggle-menu', this.toggleMenu)
+        EventBus.$on('leave-page', this.leave)
       },
-      unlistenEvents () {
-        this.vs.destroy()
+      unlistenElements () {
+        EventBus.$off('toggle-menu', this.toggleMenu)
+        EventBus.$off('leave-page', this.leave)
       },
-      wheel () {
-        this.$router.push('work')
+      ready () {
+        this.appearAnim = new TimelineMax({delay: 0.1})
+        this.appearAnim.staggerFromTo(this.$refs.hello.children, 1.5, {y: 40, autoAlpha: 0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut}, 0.1)
+      },
+      leave () {
+        this.leaveAnim = new TimelineMax()
+        this.leaveAnim.staggerTo(this.$refs.hello.children, 0.3, {y: 40, autoAlpha: 0, ease: Expo.easeIn, overwrite: 'all'}, '-0.08')
+      },
+      toggleMenu () {
+        this.menuIsClosed ? this.ready() : this.leave()
       }
     },
     components: {
@@ -67,11 +82,13 @@
     letter-spacing: 0.1em;
     font-weight: 400;
     margin: 30px 0 30px 0;
+    z-index: 1;
   }
 
   h2 {
     font-weight: 300;
     font-size: 1.75em;
+    z-index: 1;
   }
 
   ul {

@@ -53,16 +53,17 @@
       },
       leaveAnim () {
         let tl = new TimelineMax({onComplete: () => {
+          MenuStore.unblockMenu()
           this.$router.push({name: this.to})
         }})
         tl.add(this.mouseOverAnim.reverse())
-        tl.to(this.$refs.background, 1, {scaleY: 1.1, ease: Expo.easeOut}, '-=0.1')
+        tl.to(this.$refs.background, 0.75, {scaleY: 1.1, ease: Expo.easeOut}, '-=0.1')
         tl.staggerTo(this.$refs.buttonContent.children, 0.7, {y: -200, autoAlpha: 0, ease: Expo.easeIn}, 0.06, '-=1')
         tl.call(this.hideCaseStudy)
-        tl.to(this.$refs.background, 1, {transformOrigin: '0% 0%', scaleY: 0, ease: Expo.easeOut})
+        tl.to(this.$refs.background, 0.75, {transformOrigin: '0% 0%', scaleY: 0, ease: Expo.easeOut})
       },
       hideCaseStudy () {
-        TweenLite.set(this.$el, {backgroundColor: 'rgba(0,0,0,0)'})
+        TweenLite.set(this.$parent.$el, {autoAlpha: 0})
         this.isHiding = true
       },
       onMouseOver () {
@@ -97,7 +98,7 @@
   }
 
 	.next-button__subtitle {
-		font-family: 'Source Code Pro', monospace;;
+		font-family: 'Source Code Pro', monospace;
 		font-size: .3em;
     font-weight: 300;
 		letter-spacing: .05em;

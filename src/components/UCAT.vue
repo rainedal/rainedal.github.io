@@ -93,7 +93,7 @@
       },
       appearAnim () {
         let tl = new TimelineMax({onComplete: this.appear})
-          tl.fromTo(this.$refs.scrollZone, 0.8, {y: window.innerHeight}, {y: 0, ease: Expo.easeOut})
+          tl.fromTo(this.$refs.scrollZone, 0.5, {y: window.innerHeight}, {y: 0, ease: Expo.easeOut})
           tl.staggerFromTo(this.$refs.infos.children, 1, {y: 20, autoAlpha: 0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut, force3D: true}, 0.05, '-=0.3')
       },
       appear () {

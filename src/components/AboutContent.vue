@@ -63,10 +63,8 @@
         EventBus.$off('page-ready', this.loaderReady)
       },
       loaderReady () {
-        if (this.pageReady && !this.isAppeared) {
-          this.appear()
-          this.isAppeared = true
-        }
+        this.appear()
+        this.isAppeared = true
       },
       appear () {
         let tl = new TimelineMax({delay: 0.3})
