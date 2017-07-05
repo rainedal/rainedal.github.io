@@ -137,8 +137,8 @@
 </script>
 
 <style lang="scss">
-  $text-color: #00ff00;
-  $content-bg: #0000cc;
+  $text-color-vg: #00ff00;
+  $content-bg-vg: #0000cc;
 
 	.case-study {
 		height: 100%;
@@ -150,13 +150,13 @@
 
 	.case-study__content {
 		min-height: 100%;
-		color: $text-color;
+		color: $text-color-vg;
 	}  
 
 	.case-study-content-background {
 		width: 100%;
 		height: 100%;
-    background-color: $content-bg;
+    background-color: $content-bg-vg;
 		padding-bottom: 5em;
 	}
 
@@ -177,11 +177,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-    background-color: darken($content-bg, 10);
+    background-color: darken($content-bg-vg, 10);
 		transform: translateY(-50%);
 		transform-origin: bottom;
     border-width: 2px;
-    border-color: darken($content-bg, 20);
+    border-color: darken($content-bg-vg, 20);
     border-style: solid;
 	}
 
@@ -296,7 +296,7 @@
 			display: block;
 			width: 1em;
 			height: 2px;
-			background-color: $text-color;
+			background-color: $text-color-vg;
 		}
 	}
 

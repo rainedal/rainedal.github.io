@@ -76,5 +76,6 @@
     position: absolute;
     top: 100px;
     left: -30px;
+    user-select: none;
   }
 </style>

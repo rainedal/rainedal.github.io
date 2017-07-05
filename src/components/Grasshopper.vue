@@ -69,23 +69,12 @@
 
   import SmoothScroll from '@/scripts/Parallax'
   import { TimelineMax, Expo } from 'gsap'
-  import { EventBus } from '../event-bus'
   import _ from 'lodash'
-
-  import SliderStore from '@/stores/SliderStore'
-  import MenuStore from '@/stores/MenuStore'
-  import AnimationStore from '@/stores/AnimationStore'
-  import LoaderStore from '@/stores/LoaderStore'
 
   export default {
     name: 'grasshopper',
     data () {
       return {
-        isOpen: true,
-        stopAf: false,
-        isAppear: false,
-        menuState: MenuStore.state,
-        loaderState: LoaderStore.state,
         nextButtons: [
           {
             title: 'Up Close & Tasty',
@@ -94,44 +83,26 @@
         ]
       }
     },
-    computed: {
-      pageReady () {
-        return this.loaderState.pageReady
-      },
-      menuIsOpen () {
-        return !this.menuState.isClosed
-      }
-    },
     mounted () {
-      EventBus.$emit('page-ready', this.loaderReady)
-      SliderStore.openCaseStudy()
-      this.loaderReady()
+      this.appearAnim()
       this.smoothScroll = new SmoothScroll(0.1, {
         el: this.$refs.scrollZone,
         mouseMultiplier: 0.4
       })
+      this.mountParallaxElements()
     },
     beforeDestroy () {
-      SliderStore.closeCaseStudy()
       this.unlistenEvents()
       this.smoothScroll.destroy()
-    },
-    beforeRouteLeave (to, from, next) {
-      if (!MenuStore.state.isAnimated) {
-        this.leave(next)
-      }
     },
     methods: {
       events () {
         window.addEventListener('wheel', this.wheel)
         window.addEventListener('resize', _.throttle(this.resize, 200))
-        EventBus.$on('case-study-closed', this.leaveWorkPage)
       },
       unlistenEvents () {
         window.removeEventListener('wheel', this.wheel)
         window.removeEventListener('resize', _.throttle(this.resize, 200))
-        EventBus.$off('page-ready', this.loaderReady)
-        EventBus.$off('case-study-closed', this.leaveWorkPage)
       },
       appearAnim () {
         let tl = new TimelineMax({onComplete: this.appear})
@@ -139,45 +110,8 @@
           tl.staggerFromTo(this.$refs.infos.children, 1, {y: 20, autoAlpha: 0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut, force3D: true}, 0.05, '-=0.3')
       },
       appear () {
-        SliderStore.setActive()
         this.smoothScroll.init()
         this.events()
-        this.getScrollValue()
-        this.isOpen = true
-        this.isAppear = true
-        this.mountParallaxElements()
-      },
-      getScrollValue () {
-        !this.stopAf ? requestAnimationFrame(this.getScrollValue) : undefined
-        let newPosY = this.smoothScroll.currentY * 0.7
-        SliderStore.setPosY(newPosY)
-      },
-      leave (next) {
-        window.removeEventListener('wheel', this.wheel)
-        this.menuIsOpen && EventBus.$emit('close-menu')
-        MenuStore.menuIsAnimated()
-        this.smoothScroll.off()
-        this.smoothScroll.scrollTo(0, this.leaveSequence)
-        this.next = next
-      },
-      leaveSequence () {
-        EventBus.$emit('close-case-study')
-        this.stopAf = true
-        this.smoothScroll.destroy()
-        this.leaveAnim()
-      },
-      leaveAnim () {
-        let tl = new TimelineMax()
-        tl.staggerTo(this.$refs.infos.children, 0.5, {y: 20, autoAlpha: 0, ease: Expo.easeIn}, 0.05)
-        tl.to(this.$refs.scrollZone, 0.5, {y: window.innerHeight, ease: Expo.easeIn}, 0)
-      },
-      loaderReady () {
-        this.pageReady && this.appearAnim
-      },
-      leaveWorkPage () {
-        if (this.next !== undefined) {
-          return _.delay(this.next, 100)
-        }
       },
       resize () {
         this.smoothScroll.onResize()
@@ -203,8 +137,8 @@
 </script>
 
 <style lang="scss">
-  $text-color: #395440;
-  $content-bg: #A0EDB4;
+  $text-color-gh: #395440;
+  $content-bg-gh: #A0EDB4;
 
 	.case-study {
 		height: 100%;
@@ -216,13 +150,13 @@
 
 	.case-study__content {
 		min-height: 100%;
-		color: $text-color;
+		color: $text-color-gh;
 	}  
 
 	.case-study-content-background {
 		width: 100%;
 		height: 100%;
-    background-color: $content-bg;
+    background-color: $content-bg-gh;
 		padding-bottom: 5em;
 	}
 
@@ -243,11 +177,11 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-    background-color: darken($content-bg, 10);
+    background-color: darken($content-bg-gh, 10);
 		transform: translateY(-50%);
 		transform-origin: bottom;
     border-width: 2px;
-    border-color: darken($content-bg, 20);
+    border-color: darken($content-bg-gh, 20);
     border-style: solid;
 	}
 
@@ -362,7 +296,7 @@
 			display: block;
 			width: 1em;
 			height: 2px;
-			background-color: $text-color;
+			background-color: $text-color-gh;
 		}
 	}
 
