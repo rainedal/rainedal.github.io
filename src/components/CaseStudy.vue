@@ -1,9 +1,10 @@
 <template lang="html">
-  <div class="case-study">
+  <div class="case-study-nav">
 		<a class="case-study__link" :to="to" ref="link" @click.prevent="onClick">
 			<div class="case-study__title" ref="title">
 				{{ title }}
 			</div>
+			<div class="case-study__hover" ref="hoverLine"></div>
 		</a>
   </div>
 </template>
@@ -21,9 +22,11 @@
   }
 </script>
 
-<style>
+<style lang="scss">
 	.case-study__link {
 		text-decoration: none;
+		user-select: none;
+		cursor: pointer;
 	}
 
 	.case-study__title {

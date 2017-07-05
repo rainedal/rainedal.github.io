@@ -33,19 +33,19 @@
           },
           {
             title: 'Up Close & Tasty',
-            to: 'about'
+            to: 'ucat'
           },
           {
             title: 'Champs Sports',
-            to: 'about'
+            to: 'champs'
           },
           {
             title: 'Pepsi Max',
-            to: 'about'
+            to: 'pepsi'
           },
           {
             title: 'Vidgeo',
-            to: 'about'
+            to: 'vidgeo'
           }
         ]
       }

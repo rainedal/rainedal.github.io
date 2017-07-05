@@ -29,6 +29,19 @@
 			"illustrationPath": ""
 		},
 		{
+			"title": "champs sports",
+			"titleColor": "#FDEFBD",
+			"textColor": "#EEBCC0",
+			"description": "champs sports stuff",
+			"context": "conversant",
+			"role": "prototype and development",
+			"period": "2016",
+			"case-study": false,
+			"url": "",
+			"shapePath": "",
+			"illustrationPath": ""
+		},
+		{
 			"title": "pepsi max",
 			"titleColor": "#F0DE82",
 			"textColor": "#BFC1DE",
@@ -53,19 +66,6 @@
 			"url": "",
 			"shapePath": "",
 			"illustrationPath": ""
-		},
-		{
-			"title": "champs sports",
-			"titleColor": "#FDEFBD",
-			"textColor": "#EEBCC0",
-			"description": "champs sports stuff",
-			"context": "conversant",
-			"role": "prototype and development",
-			"period": "2016",
-			"case-study": false,
-			"url": "",
-			"shapePath": "",
-			"illustrationPath": ""
-		}
+		}		
 	]
 }
