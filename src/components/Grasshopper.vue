@@ -197,6 +197,7 @@
 
       .case-study__video-row {
         background-color: darken(#030066, 10);
+        transform: translateX(-50%);
       }
 
       .case-study__line {

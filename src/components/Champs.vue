@@ -194,12 +194,14 @@
 
       .case-study__video-row {
         background-color: darken(#283946, 10);
+        transform: translateX(-50%);
       }
 
       .case-study__half-block.case-study__video-row {
         padding: 2em;
         margin-left: 25%;
         width: 60%;
+        transform: translateX(0%);
       }
 
       .case-study__line {

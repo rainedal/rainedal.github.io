@@ -75,7 +75,6 @@
       this.$menuLinks = this.$refs.menuLinks.children
 
       this.events()
-      this.pageReady
 
       this.openMenuTimeline = new TimelineMax({paused: true,
         onStart () {
@@ -127,13 +126,13 @@
         }
       },
       toggleClose () {
-        if (this.menuIsNotAnimated && !this.isBlocked) {
+        // if (this.menuIsNotAnimated && !this.isBlocked) {
           if (this.isClosed) {
             this.openMenu()
           } else {
             this.closeMenu()
           }
-        }
+        // }
       },
       leavePage () {
         this.closeMenuTimeline.eventCallback('onComplete', () => {
@@ -141,17 +140,17 @@
         })
 
         if (!this.isClosed) {
-          this.closeMenuTimeline.play(0)
+          this.closeMenuTimeline.play()
           menuStore.closeMenu()
         }
       },
       openMenu () {
-        this.openMenuTimeline.play(0)
+        this.openMenuTimeline.play()
         menuStore.openMenu()
         EventBus.$emit('toggle-menu', this.isClosed)
       },
       closeMenu () {
-        this.closeMenuTimeline.play(0)
+        this.closeMenuTimeline.play()
         menuStore.closeMenu()
         EventBus.$emit('toggle-menu', this.isClosed)
       }

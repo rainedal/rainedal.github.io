@@ -1,0 +1,40 @@
+@import 'reset';
+@import 'fonts';
+
+html, body {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+
+body {
+  @media screen and (max-width: 960px) {
+    position: fixed;
+  }
+}
+
+.app {
+  font-family: 'Source Code Pro', monospace;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  background-image: linear-gradient(-30deg, #FFCAD5 -10%, #AEE2FF 100%);
+}
+
+.overlay {
+  background-color: #000000;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;  
+  position: absolute;
+  top: 0;
+  left: 0;
+}

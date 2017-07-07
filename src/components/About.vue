@@ -2,7 +2,7 @@
   <div class="page-about">
     <div class="overlay" ref="overlay"></div>
     <navigation></navigation>
-    <div class="section-title">About</div>
+    <div class="section-title" ref="title">About</div>
     <about-content></about-content>
   </div>
 </template>
