@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="case-study">
+  <div class="case-study-gh">
     <navigation></navigation>
     <div class="case-study__scroll-zone" ref="scrollZone">
       <div class="case-study__photo-background-container">
@@ -9,6 +9,7 @@
       </div>      
       <div class="case-study-content-background" ref="contentBackground">
         <div class="case-study__content case-study__row" ref="content">
+          
           <div class="case-study__infos" ref="infos">
             <div class="case-study__info">
               <div class="case-study__info__title">Context</div>
@@ -25,31 +26,45 @@
           </div>
 
           <div class="case-study__gh">
-            <div class="case-study__photo-background-container">
-              <div class="case-study__photo-background"></div>
-              <img class="case-study__photo" src="/static/assets/imgs/case-study/maje/woman.png"
-              srcset="/static/assets/imgs/case-study/maje/woman@2x.png 2x" ref="woman">
-            </div>
 
             <div class="case-study__row case-study__section">
               <div class="case-study__section-title">Summary</div>
               <div class="case-study__text-content">
-                Grasshopper is an Adobe Illustrator extension written in a combination of JavaScript (Angular, Node.js) and ExtendScript. It is designed and built to aid Art Directors and Production Artists in building digital advertisement units with a click of a button.
+                Grasshopper is an Adobe Illustrator extension designed and built to aid Art Directors and Production Artists in building digital advertisement units. It exports HTML5 and JavaScript units with a click of a button.
               </div>
             </div>
 
             <div class="case-study__photo-background-container">
               <div class="case-study__photo-background"></div>
-              <img class="case-study__photo" src="/static/assets/imgs/case-study/maje/woman.png"
-              srcset="/static/assets/imgs/case-study/maje/woman@2x.png 2x" ref="woman">
+              <img class="case-study__img" src="/static/assets/imgs/case-study/grasshopper/Grasshopper.jpg" ref="logo">
             </div>
 
-            <div class="case-study__row case-study__section">
-              <div class="case-study__section-title">Summary</div>
-              <div class="case-study__text-content">
-                Grasshopper is an Adobe Illustrator extension written in a combination of JavaScript (Angular, Node.js) and ExtendScript. It is designed and built to aid Art Directors and Production Artists in building digital advertisement units with a click of a button.
+            <case-study-video class="case-study__row case-study__video-row">
+              <source src="/static/assets/videos/case-study/grasshopper/gh-animation.mp4" type="video/mp4">
+            </case-study-video>     
+
+            <div class="case-study__line case-study__row">
+              <div class="case-study__half-block">
+                <div class="case-study__section-title">Technology Stack</div>
+                <div class="case-study__text-content">
+                  <ul>
+                    <li>• AngularJS</li>
+                    <li>• Sass</li>
+                    <li>• Node.js</li>
+                    <li>• Express</li>
+                    <li>• Adobe ExtendScript</li>
+                    <li>• Gulp</li>
+                  </ul>
+                </div>
               </div>
-            </div>            
+              <div class="case-study__half-block">
+                <div class="case-study__screen-circle">
+                  <img class="case-study__img" src="/static/assets/imgs/case-study/grasshopper/Grasshopper_header.jpg"
+                  alt="" ref="header">
+                </div>
+              </div>
+            </div> 
+
           </div>
         </div>
       </div>
@@ -66,6 +81,7 @@
 <script>
   import Navigation from '@/components/Navigation'
   import NextButton from '@/components/NextButton'
+  import CaseStudyVideo from '@/components/CaseStudyVideo'
 
   import { EventBus } from '../event-bus'
   import SmoothScroll from '@/scripts/Parallax'
@@ -119,8 +135,12 @@
       mountParallaxElements () {
         let parallaxElements = [
           {
-            el: this.$refs.woman,
-            ratio: 0.07
+            el: this.$refs.logo,
+            ratio: 0.05
+          },
+          {
+            el: this.$refs.header,
+            ratio: 0.05
           }
         ]
         this.smoothScroll.setParallaxElements(parallaxElements)
@@ -128,245 +148,64 @@
     },
     components: {
       Navigation,
-      NextButton
+      NextButton,
+      CaseStudyVideo
     }
   }
 </script>
 
 <style lang="scss">
   $text-color-gh: #395440;
-  $content-bg-gh: #A0EDB4;
+  $content-bg-gh: #E1FFD4;
 
-  .case-study {
+  .case-study-gh {
     height: 100%;
     width: 100%;
     position: relative;
     z-index: 1;
     font-size: 30px;
-  }
 
-  .case-study__content {
-    min-height: 100%;
-    color: $text-color-gh;
-  }  
+    .case-study__content {
+      color: $text-color-gh;
+    }  
 
-  .case-study-content-background {
-    width: 100%;
-    height: 100%;
-    background-color: $content-bg-gh;
-    padding-bottom: 5em;
-  }
+    .case-study-content-background {
+      background-color: $content-bg-gh;
+    }    
 
-  .case-study__row {
-    width: 760px;
-    margin: auto;
-  }
-
-  .case-study__scroll-zone {
-    position: absolute;
-    width: 100%;
-  }
-
-  .case-study__infos {
-    font-size: 21px;
-    padding: 2em 0em;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: darken($content-bg-gh, 10);
-    transform: translateY(-50%);
-    transform-origin: bottom;
-    border-width: 2px;
-    border-color: darken($content-bg-gh, 20);
-    border-style: solid;
-  }
-
-  .case-study__info {
-    display: inline-block;
-    text-align: center;
-    margin-left: 5em;
-
-    &:first-child {
-      margin-left: 0px;
+    .case-study__infos {
+      background-color: darken($content-bg-gh, 10);
+      border-color: darken($content-bg-gh, 20);
     }
 
-  }    
-
-  .case-study__info__title {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    margin-bottom: .2em;
-  }
-
-  .case-study__info__text {
-    font-family: 'Source Code Pro', monospace;
-    text-transform: capitalize;
-    font-size: .9em;
-    opacity: .6;
-  }  
-
-  .case-study__hero-title {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    font-size: 4em;
-  }
-
-  .case-study__photo-background-container {
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    margin: 250px 0px;
-  }
-
-  .case-study__photo-background {
-    position: absolute;
-    left: 0px;
-    width: 100%;
-    height: 400px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .case-study__photo  {
-    position: relative;
-    display: block;
-  }
-
-  .case-study__typography {
-    font-size: 30px;
-  }
-
-  .case-study__typography-block {
-    margin-top: 1em;
-    padding: 1.8em 1.8em;
-    background-color: darken(#011933, 2);
-  }
-
-  .case-study__typo-img {
-    margin-top: .5em;
-  }
-
-  .case-study__mini-title {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: .07em;
-    font-size: .8em;
-    opacity: .3;
-  }
-
-  .case-study__colors {
-    font-size: 30px;
-    margin-top: 6em;
-  }
-
-  .case-study__color-block {
-    display: inline-block;
-    margin-left: 1.3em;
-
-    &:first-child {
-      margin-left: 0em;
+    .case-study__section-title {
+      &:after {
+        background-color: $text-color-gh;
+      }
     }
 
+    .case-study__gh {
+      font-size: 30px;
+
+      .case-study__photo-background {
+        background-color: darken(#030066, 10);
+      }
+
+      .case-study__photo {
+          margin-top: 100px;
+      }
+
+      .case-study__video-row {
+        background-color: darken(#030066, 10);
+      }
+
+      .case-study__line {
+        margin-top: 5em;
+      }
+
+      .case-study__screen-circle img {
+        width: 350px;
+      }
+    }  
   }
-
-  .case-study__color {
-    height: 3em;
-    width: 3em;
-    border-radius: 50%;
-  }
-
-  .case-study__section-title {
-    font-family: 'Oswald', sans-serif;
-    letter-spacing: .09em;
-    text-transform: uppercase;
-    margin-bottom: 1.3em;
-    text-align: left;
-
-    &:after {
-      content: '';
-      margin-top: .2em;
-      display: block;
-      width: 1em;
-      height: 2px;
-      background-color: $text-color-gh;
-    }
-  }
-
-  .case-study__text-content {
-    font-family: 'Source Code Pro', monospace;
-    font-size: 16px;
-    line-height: 2em;
-    opacity: .7;
-    text-align: left;
-  }
-
-  .case-study__line {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .case-study__half-block {
-    position: relative;
-    display: inline-block;
-    width: 50%;
-  }
-
-  .case-study__mobile-screen {
-    margin: auto;
-    position: relative;
-    width: 50%;
-  }
-
-  .case-study__screen-circle {
-    width: 350px;
-    border-radius: 50%;
-    height: 350px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .case-study__full-screenshot {
-    width: 100%;
-    margin-top: 10em;
-  }
-
-  .case-study__full-screenshot__bg {
-    width: 100%;
-    margin-top: 160px;
-    position: absolute;
-    left: 0px;
-  }
-
-  .case-study__full-screenshot__img {
-    display: block;
-    position: relative;
-  }
-
-  .case-study__img {
-    box-shadow: 0 0 30px 0 rgba(0,0,0,.40);
-  }
-
-  .case-study__gh {
-    font-size: 30px;
-
-    .case-study__photo-background {
-      background-color: #313596;
-    }
-
-    .case-study__photo {
-        margin-top: 100px;
-    }
-
-    .case-study__section {
-      margin-top: 10em;
-      margin-bottom: 6em;
-    }
-  }  
 </style>

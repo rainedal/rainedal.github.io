@@ -83,7 +83,7 @@
 </script>
 
 <style lang="scss">
-  $about-blue: #828ED4;
+  $about-blue: #A9E1FE;
 
   .about-content {
     margin: auto;
@@ -134,7 +134,7 @@
   .about-content__link {
     font-style: bold;
     text-decoration: none;
-    color: $about-blue;
+    color: darken($about-blue, 12);
     transition: color .4s ease;
 
     &:hover {
@@ -147,14 +147,14 @@
     font-size: 1.5em;
     margin-bottom: .6em;
     letter-spacing: .1em;
-    color: $about-blue;
+    color: darken($about-blue, 12);
   }
 
   .about-content__network {
     display: inline-block;
     &:after {
-      content: '-';
-      color: $about-blue;
+      content: '•';
+      color: darken($about-blue, 12);
       margin: 0em .5em;
     }
 
@@ -170,9 +170,9 @@
     text-decoration: none;
     display: inline-block;
     vertical-align: middle;
-    color: $about-blue;
+    color: darken($about-blue, 12);
     text-transform: uppercase;
-    letter-spacing: .1em;
+    letter-spacing: .01em;
     font-size: 3em;
     line-height: 1.5em;
     transition: all .4s ease;

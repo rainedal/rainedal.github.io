@@ -1,5 +1,5 @@
 <template lang="html">
-  <div class="case-study">
+  <div class="case-study-vg">
     <navigation></navigation>
     <div class="case-study__scroll-zone" ref="scrollZone">
       <div class="case-study__photo-background-container">
@@ -27,29 +27,32 @@
           <div class="case-study__vidgeo">
             <div class="case-study__photo-background-container">
               <div class="case-study__photo-background"></div>
-              <img class="case-study__photo" src="/static/assets/imgs/case-study/maje/woman.png"
-              srcset="/static/assets/imgs/case-study/maje/woman@2x.png 2x" ref="woman">
+              <img class="case-study__img" src="/static/assets/imgs/case-study/vidgeo/N0XAiwf.png" ref="login">
             </div>
 
             <div class="case-study__row case-study__section">
               <div class="case-study__section-title">Summary</div>
               <div class="case-study__text-content">
-                something something
+                Vidgeo lets users record videos and pin them onto a location on the map. The idea and initial iOS application build was created during a hackathon. I created the experience and branding, sketched rapid prototypes, and created both low and high-fidelity mocks.
               </div>
             </div>
 
             <div class="case-study__photo-background-container">
               <div class="case-study__photo-background"></div>
-              <img class="case-study__photo" src="/static/assets/imgs/case-study/maje/woman.png"
-              srcset="/static/assets/imgs/case-study/maje/woman@2x.png 2x" ref="woman">
-            </div>
-
-            <div class="case-study__row case-study__section">
-              <div class="case-study__section-title">Summary</div>
-              <div class="case-study__text-content">
-                something something
+              <div class="case-study__half-block">
+                <div class="case-study__screen-circle">
+                  <img class="case-study__photo" src="/static/assets/imgs/case-study/vidgeo/rARFU1j.png"
+                  alt="" ref="phone1">
+                </div>
               </div>
-            </div>            
+              <div class="case-study__half-block">
+                <div class="case-study__screen-circle">
+                  <img class="case-study__photo" src="/static/assets/imgs/case-study/vidgeo/Qcpv1p8.png"
+                  alt="" ref="phone2">
+                </div>
+              </div>							
+            </div>
+       
           </div>
         </div>
       </div>
@@ -122,8 +125,16 @@
       mountParallaxElements () {
         let parallaxElements = [
           {
-            el: this.$refs.woman,
-            ratio: 0.1
+            el: this.$refs.login,
+            ratio: 0.04
+          },
+          {
+            el: this.$refs.phone1,
+            ratio: 0.05
+          },
+          {
+            el: this.$refs.phone2,
+            ratio: 0.05
           }
         ]
         this.smoothScroll.setParallaxElements(parallaxElements)
@@ -137,239 +148,49 @@
 </script>
 
 <style lang="scss">
-  $text-color-vg: #00ff00;
-  $content-bg-vg: #0000cc;
+  $text-color-vg: #7F6A3C;
+  $content-bg-vg: #FFEBC0;
 
-	.case-study {
-		height: 100%;
+  .case-study-vg {
+    height: 100%;
     width: 100%;
-		position: relative;
-		z-index: 1;
-		font-size: 30px;
-	}
-
-	.case-study__content {
-		min-height: 100%;
-		color: $text-color-vg;
-	}  
-
-	.case-study-content-background {
-		width: 100%;
-		height: 100%;
-    background-color: $content-bg-vg;
-		padding-bottom: 5em;
-	}
-
-	.case-study__row {
-		width: 760px;
-		margin: auto;
-	}
-
-	.case-study__scroll-zone {
-		position: absolute;
-		width: 100%;
-	}
-
-	.case-study__infos {
-		font-size: 21px;
-		padding: 2em 2.5em;
-		margin: auto;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-    background-color: darken($content-bg-vg, 10);
-		transform: translateY(-50%);
-		transform-origin: bottom;
-    border-width: 2px;
-    border-color: darken($content-bg-vg, 20);
-    border-style: solid;
-	}
-
-	.case-study__info {
-		display: inline-block;
-		text-align: center;
-		margin-left: 5em;
-
-		&:first-child {
-			margin-left: 0px;
-		}
-
-	}    
-
-	.case-study__info__title {
-    font-family: 'Oswald', sans-serif;
-		text-transform: uppercase;
-		letter-spacing: .08em;
-		margin-bottom: .2em;
-	}
-
-	.case-study__info__text {
-		font-family: 'Source Code Pro', monospace;
-		text-transform: capitalize;
-		font-size: .9em;
-		opacity: .6;
-	}  
-
-  .case-study__hero-title {
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    font-size: 4em;
-  }
-
-	.case-study__photo-background-container {
-		height: 400px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-
-		margin: 250px 0px;
-	}
-
-	.case-study__photo-background {
-		position: absolute;
-		left: 0px;
-		width: 100%;
-		height: 400px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.case-study__photo  {
-		position: relative;
-		display: block;
-	}
-
-	.case-study__typography {
-		font-size: 30px;
-	}
-
-	.case-study__typography-block {
-		margin-top: 1em;
-		padding: 1.8em 1.8em;
-		background-color: darken(#011933, 2);
-	}
-
-	.case-study__typo-img {
-		margin-top: .5em;
-	}
-
-	.case-study__mini-title {
-		font-family: 'Oswald', sans-serif;
-		text-transform: uppercase;
-		letter-spacing: .07em;
-		font-size: .8em;
-		opacity: .3;
-	}
-
-	.case-study__colors {
-		font-size: 30px;
-		margin-top: 6em;
-	}
-
-	.case-study__color-block {
-		display: inline-block;
-		margin-left: 1.3em;
-
-		&:first-child {
-			margin-left: 0em;
-		}
-
-	}
-
-	.case-study__color {
-		height: 3em;
-		width: 3em;
-		border-radius: 50%;
-	}
-
-	.case-study__section-title {
-		font-family: 'Oswald', sans-serif;
-		letter-spacing: .09em;
-		text-transform: uppercase;
-		margin-bottom: 1.3em;
-    text-align: left;
-
-		&:after {
-			content: '';
-			margin-top: .2em;
-			display: block;
-			width: 1em;
-			height: 2px;
-			background-color: $text-color-vg;
-		}
-	}
-
-	.case-study__text-content {
-		font-family: 'Source Code Pro', monospace;
-		font-size: 16px;
-		line-height: 2em;
-		opacity: .7;
-    text-align: left;
-	}
-
-	.case-study__line {
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-
-	.case-study__half-block {
-		position: relative;
-		display: inline-block;
-		width: 50%;
-	}
-
-	.case-study__mobile-screen {
-		margin: auto;
-		position: relative;
-		width: 50%;
-	}
-
-	.case-study__screen-circle {
-		width: 350px;
-		border-radius: 50%;
-		height: 350px;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.case-study__full-screenshot {
-		width: 100%;
-		margin-top: 10em;
-	}
-
-	.case-study__full-screenshot__bg {
-		width: 100%;
-		margin-top: 160px;
-		position: absolute;
-		left: 0px;
-	}
-
-	.case-study__full-screenshot__img {
-		display: block;
-		position: relative;
-	}
-
-	.case-study__img {
-		box-shadow: 0 0 30px 0 rgba(0,0,0,.40);
-	}
-
-  .case-study__vidgeo {
+    position: relative;
+    z-index: 1;
     font-size: 30px;
 
-    .case-study__photo-background {
-      background-color: #313596;
+    .case-study__content {
+      color: $text-color-vg;
+    }  
+
+    .case-study-content-background {
+      background-color: $content-bg-vg;
+    }    
+
+    .case-study__infos {
+      background-color: darken($content-bg-vg, 10);
+      border-color: darken($content-bg-vg, 20);
     }
 
-    .case-study__photo {
-        margin-top: 100px;
+    .case-study__section-title {
+      &:after {
+        background-color: $text-color-vg;
+      }
     }
 
-    .case-study__section {
-      margin-top: 10em;
-      margin-bottom: 6em;
-    }
+    .case-study__vidgeo {
+      font-size: 30px;
+
+      .case-study__photo-background {
+        background-color: $text-color-vg;
+      }
+
+      .case-study__photo {
+          margin-top: 100px;
+      }
+
+      .case-study__section {
+        margin: 5em 0;
+      }
+    }  
   }  
 </style>

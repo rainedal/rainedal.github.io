@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="page-about">
+    <div class="overlay" ref="overlay"></div>
     <navigation></navigation>
     <div class="section-title">About</div>
     <about-content></about-content>
@@ -13,6 +14,7 @@
   import AnimationStore from '@/stores/AnimationStore'
   import MenuStore from '@/stores/MenuStore'
   import { EventBus } from '../event-bus'
+  import { TimelineMax, Expo } from 'gsap'
   import _ from 'lodash'
 
   export default {
@@ -24,6 +26,10 @@
         EventBus.$emit('leave-page', {to: to, from: from})
         _.delay(next, delay)
       }
+    },
+    mounted () {
+        let overlayTl = new TimelineMax({delay: 0})
+        overlayTl.to(this.$refs.overlay, 0.5, {autoAlpha: 0, ease: Expo.easeOut})
     },
     components: {
       Navigation,

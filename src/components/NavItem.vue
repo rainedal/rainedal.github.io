@@ -12,24 +12,12 @@
 <script>
   import { TimelineMax, Expo } from 'gsap'
   import { EventBus } from '../event-bus'
-  import menuStore from '@/stores/MenuStore'
 
   export default {
     props: [
       'to', 'title'
     ],
-    data () {
-      return {
-        state: menuStore.state
-      }
-    },
     computed: {
-      menuIsClosed () {
-        return this.state.isClosed
-      },
-      menuIsAnimated () {
-        return this.state.isAnimated
-      },
       isCurrentRoute () {
         let isCurrentRoute = this.$route.name === this.to ? true : false
         return isCurrentRoute
@@ -37,7 +25,7 @@
     },
     mounted () {
       this.hoverAnim = new TimelineMax({paused: true})
-      this.hoverAnim.to(this.$refs.hoverLine, 0.6, {x: '-50%', scaleX: 1, autoAlpha: 1, ease:Expo.easeOut})
+      this.hoverAnim.to(this.$refs.hoverLine, 0.3, {x: '-50%', scaleX: 1, autoAlpha: 1, ease:Expo.easeOut})
     },
     methods: {
       mouseover () {
@@ -47,12 +35,10 @@
         this.hoverAnim.reverse()
       },
       onClick () {
-        if (!this.menuIsAnimated) {
-          if (this.isCurrentRoute) {
-            return EventBus.$emit('click-current-link')
-          } else if (!this.menuIsAnimated) {
-            this.$router.push({name: this.to})
-          }
+        if (this.isCurrentRoute) {
+          return EventBus.$emit('click-current-link')
+        } else {
+          this.$router.push({name: this.to})
         }
       }
     }
@@ -68,7 +54,7 @@
     user-select: none;
     visibility: hidden;
     cursor: pointer;
-    margin-bottom: 60px;
+    margin-bottom: 120px;
     transform: translateY(200px);
     &:last-child {
       margin-bottom: 0px;
@@ -82,7 +68,7 @@
     opacity: 0;
     position: absolute;
     margin-left: 50%;
-    top: 95%;
+    top: 120%;
     background-image: linear-gradient(-30deg, #FFCAD5 -10%, #AEE2FF 100%);
     transform: translate3d(-50%, -50%, 0px) scaleX(0);
     transform-origin: center;

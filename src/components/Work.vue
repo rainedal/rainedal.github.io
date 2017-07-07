@@ -1,5 +1,6 @@
 <template lang="html">
   <div class="work">
+    <div class="overlay" ref="overlay"></div>
     <navigation></navigation>
     <div class="section-title">Work</div>
     <div class="case-studies" ref="cases">
@@ -88,8 +89,9 @@
         this.isAppeared = true
       },
       appear () {
-        let tl = new TimelineMax({delay: 0.3})
-        tl.staggerFromTo(this.$refs.cases.children, 1.5, {y: 40, autoAlpha:0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut}, 0.1)
+        let tl = new TimelineMax({delay: 0})
+        tl.to(this.$refs.overlay, 0.5, {autoAlpha: 0, ease: Expo.easeOut})
+        tl.staggerFromTo(this.$refs.cases.children, 1.5, {y: 40, autoAlpha:0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut}, 0.1, '-=0.1')
       },
       leave () {
         let tl = new TimelineMax()

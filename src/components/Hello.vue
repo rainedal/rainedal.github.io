@@ -1,10 +1,11 @@
 <template>
   <div class="hello">
+    <div class="overlay" ref="overlay"></div>
     <navigation></navigation>
     <div ref="hello">
       <h1>{{ title }}</h1>
       <h2>is a Creative Technologist in Seattle, Washington</h2>
-    </div>
+    </div>    
   </div>
 </template>
 
@@ -57,8 +58,9 @@
         EventBus.$off('leave-page', this.leave)
       },
       ready () {
-        this.appearAnim = new TimelineMax({delay: 0.1})
-        this.appearAnim.staggerFromTo(this.$refs.hello.children, 1.5, {y: 40, autoAlpha: 0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut}, 0.1)
+        this.appearAnim = new TimelineMax({delay: 0})
+        this.appearAnim.to(this.$refs.overlay, 0.5, {autoAlpha: 0, ease: Expo.easeOut})
+        this.appearAnim.staggerFromTo(this.$refs.hello.children, 1.5, {y: 40, autoAlpha: 0}, {y: 0, autoAlpha: 1, ease: Expo.easeOut}, 0.1, '-=0.25')
       },
       leave () {
         this.leaveAnim = new TimelineMax()
@@ -74,7 +76,7 @@
   }
 </script>
 
-<style scoped>
+<style lang="scss">
   h1 {
     font-family: 'Oswald', sans-serif;
     font-size: 7em;
@@ -89,19 +91,5 @@
     font-weight: 300;
     font-size: 1.75em;
     z-index: 1;
-  }
-
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-
-  a {
-    color: #42b983;
   }
 </style>

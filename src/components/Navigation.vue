@@ -200,7 +200,7 @@
 
   .menu-line {
     width: 100%;
-    height: 1px;
+    height: 5px;
     background-color: #ffffff;
     margin-bottom: 11px;
     transform-origin: left;
