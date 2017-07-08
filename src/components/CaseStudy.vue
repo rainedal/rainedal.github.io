@@ -101,7 +101,7 @@
     padding: 2em 0em;
     margin: auto;
     display: flex;
-    align-items: center;
+    align-items: top;
     justify-content: center;
     transform: translateY(-50%);
     transform-origin: bottom;

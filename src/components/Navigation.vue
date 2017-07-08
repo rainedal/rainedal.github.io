@@ -7,13 +7,11 @@
         <div class="menu-line menu-line--big"></div>
         <div class="menu-line menu-line--big"></div>
       </div>
-      <span ref="menuCircleHover" class="menu-circle-hover"></span>
     </div>
     <div class="menu-links" ref="menuLinks">
       <nav-item
         v-for="navItem in navItems" :key="navItem.to"
         v-bind:title="navItem.title"
-        v-bind:subtitle="navItem.subtitle"
         v-bind:to="navItem.to">
       </nav-item>
     </div>
@@ -22,25 +20,23 @@
 </template>
 
 <script>
-  import { TimelineMax, Expo } from 'gsap'
+  import { TimelineMax, Expo, Power4 } from 'gsap'
   import _ from 'lodash'
 
   import { EventBus } from '../event-bus'
   import NavItem from '@/components/NavItem'
 
-  import menuStore from '@/stores/MenuStore'
-  import loaderStore from '@/stores/LoaderStore'
+  import MenuStore from '@/stores/MenuStore'
 
   export default {
     name: 'navigation',
     data () {
       return {
-        state: menuStore.state,
-        loaderState: loaderStore.state,
+        state: MenuStore.state,
         navItems: [
           {
-            title: 'Hello',
-            to: 'hello'
+            title: 'Home',
+            to: 'home'
           },
           {
             title: 'Work',
@@ -54,9 +50,6 @@
       }
     },
     computed: {
-      pageReady () {
-        return this.loaderState.pageReady
-      },
       isClosed () {
         return this.state.isClosed
       },
@@ -76,33 +69,22 @@
 
       this.events()
 
-      this.openMenuTimeline = new TimelineMax({paused: true,
-        onStart () {
-          menuStore.menuIsAnimated()
-        },
-        onComplete () {
-          menuStore.menuIsNotAnimated()
-      }})
+      this.iconEnterAnim = new TimelineMax({paused: true})
+      this.iconEnterAnim.from(this.$menuLines[0], 0.4, {scaleX: 0, ease: Power4.easeInOut}, '0.5')
+      this.iconEnterAnim.from(this.$menuLines[2], 0.4, {scaleX: 0, ease: Power4.easeInOut}, '-=0.2')
+      this.iconEnterAnim.from(this.$menuLines[1], 0.4, {scaleX: 0, ease: Power4.easeInOut}, '-=0.3')
+
+      this.iconEnterAnim.play()
+
+      this.openMenuTimeline = new TimelineMax({paused: true})
 
       this.openMenuTimeline
-        .set(this.$refs.menuLinks, {autoAlpha: 1})
-        .to(this.$menuLines, 0.5, {autoAlpha: 0, ease: Expo.easeInOut})
-        .to(this.$refs.menuBackground, 1, {autoAlpha: 1, ease: Expo.easeOut}, 0)
-        .staggerTo(this.$menuLinks, 1.5, {y: 0, autoAlpha: 1, ease: Expo.easeOut, force3D: true}, 0.08, 0)
-
-      this.closeMenuTimeline = new TimelineMax({paused: true,
-        onStart () {
-          menuStore.menuIsAnimated()
-        },
-        onComplete () {
-          menuStore.menuIsNotAnimated()
-      }})
-
-      this.closeMenuTimeline
-        .to(this.$menuLines, 0.5, {autoAlpha: 1, ease: Expo.easeInOut})
-        .to(this.$refs.menuBackground, 1, {autoAlpha: 0, ease: Expo.easeIn}, 0)
-        .staggerTo(this.$menuLinks, 0.5, {y: 200, autoAlpha: 0, ease: Expo.easeIn}, -0.05, 0)
-        .set(this.$refs.menuLinks, {autoAlpha: 0})
+        .to(this.$menuLines[1], 0.3, {x: -10, autoAlpha: 0, ease: Expo.easeInOut})
+        .to(this.$menuLines[0], 0.3, {rotation: 45, scaleX: 0.94, ease: Expo.easeInOut}, 0)
+        .to(this.$menuLines[2], 0.3, {rotation: -45, scaleX: 0.94, ease: Expo.easeInOut}, 0)
+        .set(this.$refs.menuLinks, {autoAlpha: 1}, 0)
+        .to(this.$refs.menuBackground, 1, {autoAlpha: 1, ease: Expo.easeInOut}, 0)
+        .staggerTo(this.$menuLinks, 1.5, {y: 0, autoAlpha: 1, ease: Expo.easeInOut, force3D: true}, 0.08, 0)
     },
     beforeDestroy () {
       this.unlistenEvents()
@@ -116,9 +98,9 @@
       },
       unlistenEvents () {
         window.removeEventListener('resize', this.throttledOnResize)
+        EventBus.$off('click-current-link', this.closeMenu)
         EventBus.$off('leave-page', this.leavePage)
         EventBus.$off('close-menu', this.closeMenu)
-        EventBus.$off('click-current-link', this.closeMenu)
       },
       onResize () {
         if (window.innerWidth < 960 && !this.isClosed) {
@@ -126,32 +108,26 @@
         }
       },
       toggleClose () {
-        // if (this.menuIsNotAnimated && !this.isBlocked) {
-          if (this.isClosed) {
-            this.openMenu()
-          } else {
-            this.closeMenu()
-          }
-        // }
+        if (this.isClosed) {
+          this.openMenu()
+        } else if (!this.isClosed) {
+          this.closeMenu()
+        }
       },
       leavePage () {
-        this.closeMenuTimeline.eventCallback('onComplete', () => {
-          menuStore.menuIsNotAnimated()
-        })
-
         if (!this.isClosed) {
-          this.closeMenuTimeline.play()
-          menuStore.closeMenu()
+          MenuStore.closeMenu()
+          this.openMenuTimeline.reverse()
         }
       },
       openMenu () {
         this.openMenuTimeline.play()
-        menuStore.openMenu()
+        MenuStore.openMenu()
         EventBus.$emit('toggle-menu', this.isClosed)
       },
       closeMenu () {
-        this.closeMenuTimeline.play()
-        menuStore.closeMenu()
+        this.openMenuTimeline.reverse()
+        MenuStore.closeMenu()
         EventBus.$emit('toggle-menu', this.isClosed)
       }
     },

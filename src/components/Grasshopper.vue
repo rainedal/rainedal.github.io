@@ -52,8 +52,9 @@
                     <li>• Sass</li>
                     <li>• Node.js</li>
                     <li>• Express</li>
-                    <li>• Adobe ExtendScript</li>
+                    <li>• ExtendScript API</li>
                     <li>• Gulp</li>
+                    <li>• Jasmine</li>
                   </ul>
                 </div>
               </div>

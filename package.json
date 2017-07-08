@@ -12,7 +12,8 @@
   },
   "dependencies": {
     "assets-loader": "^0.5.1",
-    "gsap": "^1.20.1",
+    "gsap": "^1.20.2",
+    "in-viewport": "^3.5.0",
     "lodash": "^4.17.4",
     "virtual-scroll": "^1.2.1",
     "vue": "^2.3.3",

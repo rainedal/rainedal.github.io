@@ -2,7 +2,7 @@
   <div class="work">
     <div class="overlay" ref="overlay"></div>
     <navigation></navigation>
-    <div class="section-title" ref="title">Work</div>
+    <div class="section-title" ref="work">Work</div>
     <div class="case-studies" ref="cases">
       <case-study
         v-for="caseStudy in caseStudies" :key="caseStudy.to"
@@ -96,7 +96,6 @@
       leave () {
         let tl = new TimelineMax()
         tl.staggerTo(this.$refs.cases.children, 0.3, {y: 40, autoAlpha: 0, ease: Expo.easeIn, overwrite: 'all'}, '-0.08')
-        tl.to(this.$refs.title, 0.2, {y: 40, autoAlpha: 0, ease: Expo.easeIn})
       },
       toggleMenu () {
         this.menuIsClosed ? this.appear() : this.leave()

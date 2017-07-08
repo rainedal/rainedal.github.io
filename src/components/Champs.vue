@@ -27,7 +27,7 @@
           <div class="case-study__champs">
             <div class="case-study__photo-background-container">
               <div class="case-study__photo-background"></div>
-              <img class="case-study__img" src="/static/assets/imgs/case-study/champs/champssports1.png" ref="logo">
+              <img class="case-study__photo" src="/static/assets/imgs/case-study/champs/champssports1.png" ref="logo">
             </div>
             
             <div class="case-study__row case-study__section">
@@ -58,7 +58,26 @@
               <case-study-video class="case-study__half-block case-study__video-row">
                 <source src="/static/assets/videos/case-study/champs/Champs_prototype_6.mp4" type="video/mp4">
               </case-study-video>  
-            </div>  						            
+            </div>
+
+            <div class="case-study__line case-study__row">            
+              <div class="case-study__half-block">
+                <div class="case-study__screen-circle">
+                  <img class="case-study__photo" src="/static/assets/imgs/case-study/champs/77153_fr_sc7_rs.png"
+                  alt="" ref="shoe">
+                </div>
+              </div>
+              <div class="case-study__half-block">
+                <div class="case-study__section-title">Technology Stack</div>
+                <div class="case-study__text-content">
+                  <ul>
+                    <li>• JavaScript (Internal Framework)</li>
+                    <li>• GreenSock Animation Platform</li>
+                    <li>• Parallax.js</li>
+                  </ul>
+                </div>
+              </div>              
+            </div>  						                        
           </div>
         </div>
       </div>
@@ -134,6 +153,10 @@
           {
             el: this.$refs.logo,
             ratio: 0.05
+          },
+          {
+            el: this.$refs.shoe,
+            ratio: 0.05
           }
         ]
         this.smoothScroll.setParallaxElements(parallaxElements)
@@ -162,6 +185,10 @@
       color: $text-color-cs;
     }  
 
+    .case-study__screen-circle {
+      background-color: $text-color-cs;
+    }
+
     .case-study-content-background {
       background-color: $content-bg-cs;
     }    
@@ -177,11 +204,16 @@
       }
     }
 
+    .case-study__half-block {
+      margin: 0 1em;
+      transform: translateX(-10%);
+    }
+    
     .case-study__champs {
       font-size: 30px;
 
       .case-study__photo-background {
-        background-color: darken(#03417E, 10);
+        background-color: $text-color-cs;
       }
 
       .case-study__photo-background-container {
@@ -211,6 +243,10 @@
       .case-study__section {
         margin: 5em 0;
       }
+
+      .case-study__screen-circle img {
+        height: 500px;
+      }      
     }  
   }  
 </style>

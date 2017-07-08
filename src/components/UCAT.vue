@@ -34,7 +34,13 @@
               <div class="case-study__text-content">
                 Up Close & Tasty is a food photography blog powered by the WordPress platform. I assisted the owner in migrating the blog from Squarespace to WordPress, and have been implementing various custom stylistic and functional tweaks across the site in order to improve and smoothen its user experience.
               </div>
-            </div>   
+            </div>  
+
+            <div class="case-study__line case-study__row-button">
+              <div class="case-study__photo-background"></div>
+              <link-button url="http://upcloseandtasty.com" text="visit the website"></link-button>
+            </div>            
+
 						<div class="case-study__full-screenshot">
 							<img class="case-study__full-screenshot__bg"
 								src="/static/assets/imgs/case-study/ucat/screen-bg.svg"
@@ -43,6 +49,29 @@
 								src="/static/assets/imgs/case-study/ucat/2017-07-06-21-40-upcloseandtasty.com.png"
 								alt="" ref="main">
 						</div>
+
+            <div class="case-study__line case-study__row">
+              <div class="case-study__photo-background"></div>
+              <div class="case-study__half-block">
+                <div class="case-study__screen-circle">
+                  <img class="case-study__img" src="/static/assets/imgs/case-study/ucat/smores_popsicles_upcloseandtasty_07b.jpg"
+                  alt="" ref="smores">
+                </div>
+              </div>
+
+              <div class="case-study__half-block">
+                <div class="case-study__section-title">Technology Stack</div>
+                <div class="case-study__text-content">
+                  <ul>
+                    <li>• JavaScript</li>
+                    <li>• HTML</li>
+                    <li>• CSS</li>
+                    <li>• PHP</li>
+                  </ul>
+                </div>
+              </div>
+            </div> 
+
 					  <div class="case-study__full-screenshot">
 							<img class="case-study__full-screenshot__bg"
 								src="/static/assets/imgs/case-study/ucat/screen-bg.svg"
@@ -67,6 +96,7 @@
 <script>
   import Navigation from '@/components/Navigation'
   import NextButton from '@/components/NextButton'
+  import LinkButton from '@/components/LinkButton'
 
   import SmoothScroll from '@/scripts/Parallax'
   import { TimelineMax, Expo } from 'gsap'
@@ -131,6 +161,10 @@
             ratio: 0.04
           },
           {
+            el: this.$refs.smores,
+            ratio: 0.04
+          },
+          {
             el: this.$refs.bg1,
             ratio: -0.2
           },
@@ -148,7 +182,8 @@
     },
     components: {
       Navigation,
-      NextButton
+      NextButton,
+      LinkButton
     }
   }
 </script>
@@ -175,7 +210,43 @@
       @media screen and (max-width: 1500px){
         max-width: 300px;
       }
+    }
 
+    .slide__button {
+      padding: .9em 2em;
+      border-style: solid;
+      border-width: 1px;
+      border-radius: 3px;
+
+      display: inline-block;
+      position: relative;
+
+      font-family: 'Oswald', sans-serif;
+      text-decoration: none;
+      font-size: 1em;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+      color: #EBD6C5;
+      overflow: hidden;
+      cursor: pointer;
+
+      // @media screen and (max-width: 1500px){
+      //   font-size: 15px;
+      // }
+    }  
+
+    .case-study__row-button {
+      margin: auto;
+      justify-content: center;
+    }  
+
+    .case-study__half-block {
+      margin: 0 1em;
+    }
+
+    .case-study__line {
+        margin: 10em 0; 
+        color: #EBD6C5;
     }
 
     .case-study__content {
@@ -211,6 +282,10 @@
       .case-study__section {
         margin: 5em 0;
       }
+
+      .case-study__screen-circle img {
+        width: 350px;
+      }      
     }  
   }  
 </style>

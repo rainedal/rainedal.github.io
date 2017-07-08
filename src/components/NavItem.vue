@@ -13,11 +13,24 @@
   import { TimelineMax, Expo } from 'gsap'
   import { EventBus } from '../event-bus'
 
+  import MenuStore from '@/stores/MenuStore'
+
   export default {
     props: [
       'to', 'title'
     ],
+    data () {
+      return {
+        state: MenuStore.state
+      }
+    },
     computed: {
+      menuIsClosed () {
+        return this.state.isClosed
+      },
+      menuIsAnimated () {
+        return this.state.isAnimated
+      },
       isCurrentRoute () {
         let isCurrentRoute = this.$route.name === this.to ? true : false
         return isCurrentRoute
@@ -35,10 +48,12 @@
         this.hoverAnim.reverse()
       },
       onClick () {
-        if (this.isCurrentRoute) {
-          return EventBus.$emit('click-current-link')
-        } else {
-          this.$router.push({name: this.to})
+        if (!this.menuIsAnimated) {
+          if (this.isCurrentRoute) {
+            return EventBus.$emit('click-current-link')
+          } else if (!this.menuIsAnimated) {
+            this.$router.push({name: this.to})
+          }
         }
       }
     }
